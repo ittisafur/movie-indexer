@@ -6,14 +6,12 @@ module.exports = {
     extend: {
       colors: {
         dark: {
-          150: "#717171",
           250: "#171717",
           550: "#131313",
         },
       },
       fontFamily: {
         mont: ["Montserrat", "sans-serif"],
-        pop: ["Poppins", "sans-serif"],
       },
     },
   },

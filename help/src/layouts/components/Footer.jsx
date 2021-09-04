@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className="mt-6">
+    <div>
       Powered by{" "}
       <a href="https://themoviedb.org" target="_blank">
         {" "}
