@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-class Movies extends Component {
+// Components
+import Movie from "../components/Movie";
+
+class Index extends Component {
   state = {
     movies: [],
     genres: [],
@@ -26,30 +29,15 @@ class Movies extends Component {
   };
 
   render() {
+    const { movies } = this.state;
     return (
       <div>
         <h1 className="my-5 text-2xl text-white font-mont font-semibold ">
           Popular Now
         </h1>
-        <div className="grid md:gap-4 md:grid-cols-4 lg:grid-cols-5 lg:gap-5 gap-1 grid-cols-1">
-          {this.state.movies.map((movie) => (
-            <div key={movie.id}>
-              <img
-                className="w-full"
-                src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
-              />
-              <div className="font-pop text-sm">
-                <h2 className="font-bold mt-5 mb-2">{movie.original_title}</h2>
-                <div className="flex justify-between text-dark-150 ">
-                  <p className="tracking-wide w-8/12">
-                    {this.getGenres(movie.genre_ids).map((genre) => (
-                      <span key={genre.id}>{genre.name}, </span>
-                    ))}
-                  </p>
-                  <p> {movie.vote_average}/10</p>
-                </div>
-              </div>
-            </div>
+        <div className="grid md:gap-3 md:grid-cols-3 lg:grid-cols-4 lg:gap-4 gap-1 grid-cols-1">
+          {movies.map((movie) => (
+            <Movie key={movie.id} movie={movie} genres={this.getGenres} />
           ))}
         </div>
       </div>
@@ -57,4 +45,4 @@ class Movies extends Component {
   }
 }
 
-export default Movies;
+export default Index;

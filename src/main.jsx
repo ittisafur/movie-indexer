@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
 
-import Movies from "./pages/Movies";
+import Index from "./pages/Index";
 import TvShows from "./pages/TvShows";
 import Default from "./layouts/default";
 import "./assets/style/main.css";
@@ -19,7 +19,7 @@ ReactDOM.render(
     <BrowserRouter>
       <Default>
         <Switch>
-          <Route exact path="/" component={Movies} />
+          <Route exact path="/" component={Index} />
           <Route exact path="/tvshows" component={TvShows} />
         </Switch>
       </Default>
