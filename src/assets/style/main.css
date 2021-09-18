@@ -13,3 +13,20 @@
     @apply bg-dark-250;
   }
 }
+@layer base {
+  *::selection {
+    @apply bg-dark-150 text-gray-800;
+  }
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-600 rounded-lg;
+  }
+}

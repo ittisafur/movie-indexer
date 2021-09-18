@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "@emotion/styled";
+import Casts from "../components/Casts";
 
 const StyledBanner = styled.div`
   background: url("https://image.tmdb.org/t/p/original/${(props) =>
@@ -30,7 +31,7 @@ class MovieDetails extends Component {
 
     axios
       .get(`movie/${this.props.match.params.id}/credits`)
-      .then((res) => this.setState({ credits: res.data, loading: false }));
+      .then((res) => this.setState({ credits: res.data.cast, loading: false }));
   }
   render() {
     if (this.state.loading) {
@@ -45,17 +46,18 @@ class MovieDetails extends Component {
           className="relative flex items-center justify-center h-full"
         >
           <GradientDiv className="h-full w-full">
-            <div className="grid grid-cols-2">
-              <div className="w-8/12">
+            <div className="grid grid-cols-12 gap-3">
+              <div className="col-span-4">
                 <img
                   src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
                 />
               </div>
-              <div className="transform translate-y-[50px] relative font-pop">
+              <div className="col-span-8 transform translate-y-[50px] relative font-pop">
                 <h1 className="text-2xl font-semibold tracking-wider uppercase ">
                   {movie.original_title}
                 </h1>
-                <p className="my-8">
+                <p className="italic mt-3">{movie.tagline}</p>
+                <p className="my-3">
                   Release Date: {movie.release_date} |{" "}
                   <span>Runtime: {(movie.runtime / 60).toFixed(2)} hours</span>
                 </p>
@@ -64,7 +66,9 @@ class MovieDetails extends Component {
             </div>
           </GradientDiv>
         </StyledBanner>
-        <section></section>
+        <section>
+          <Casts movieId={movie.id} casts={this.state.credits} />
+        </section>
       </div>
     );
   }
