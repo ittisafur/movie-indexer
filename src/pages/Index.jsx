@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { VisibilityObserver } from "reactjs-visibility";
 
 // Components
 import Movie from "../components/Movie";
@@ -8,6 +9,8 @@ class Index extends Component {
   state = {
     movies: [],
     genres: [],
+    page: 1,
+    loading: false,
   };
 
   componentDidMount() {
@@ -17,11 +20,22 @@ class Index extends Component {
       .catch((err) => console.log(err));
 
     axios
-      .get(
-        "https://api.themoviedb.org/3/genre/movie/list?api_key=ca6d58ba9bcf5c2f6cae78fa18b14045&language=en-US"
-      )
+      .get("genre/movie/list")
       .then((res) => this.setState({ genres: res.data.genres }));
   }
+  handlePaginate = (visible) => {
+    if (!visible) return;
+
+    this.setState({ page: ++this.state.page, loading: true });
+    axios
+      .get(`movie/popular?page=${this.state.page}`)
+      .then((res) => {
+        const movies = [...this.state.movies, ...res.data.results];
+        this.setState({ movies, loading: false });
+      })
+      .catch((err) => console.log(err));
+  };
+
   getGenres = (ids) => {
     return this.state.genres.filter((genre) => ids.includes(genre.id));
   };
@@ -37,6 +51,11 @@ class Index extends Component {
           {movies.map((movie) => (
             <Movie key={movie.id} movie={movie} genres={this.getGenres} />
           ))}
+        </div>
+        <div className="my-8 text-center">
+          <VisibilityObserver onChangeVisibility={this.handlePaginate}>
+            Loading...
+          </VisibilityObserver>
         </div>
       </div>
     );
