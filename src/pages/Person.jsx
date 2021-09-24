@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class Person extends Component {
   state = {
@@ -50,12 +51,14 @@ class Person extends Component {
 
             <div className="flex overflow-y-auto space-x-3">
               {related.slice(0, 6).map((relate) => (
-                <div className="flex-none">
-                  <img
-                    className="w-full h-auto"
-                    src={`https://image.tmdb.org/t/p/w154${relate.poster_path}`}
-                    alt={relate.title}
-                  />
+                <div className="flex-none" key={relate.id}>
+                  <Link to={`/movies/${relate.id}`}>
+                    <img
+                      className="w-[154px]"
+                      src={`https://image.tmdb.org/t/p/w154${relate.poster_path}`}
+                      alt={relate.title}
+                    />
+                  </Link>
                   <h5 className="text-base text-center">{relate.title}</h5>
                 </div>
               ))}

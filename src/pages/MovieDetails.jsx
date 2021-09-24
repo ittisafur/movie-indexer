@@ -29,6 +29,12 @@ class MovieDetails extends Component {
       .get(`movie/${this.props.match.params.id}`)
       .then((res) => this.setState({ movie: res.data, loading: false }));
 
+    // renew = () => {
+    //   let edit = [...this.state.credits];
+    //   let temp = edit.filter((d) => d.profile_path !== null);
+    //   edit = temp;
+    //   return edit;
+    // };
     axios
       .get(`movie/${this.props.match.params.id}/credits`)
       .then((res) => this.setState({ credits: res.data.cast, loading: false }));
@@ -53,6 +59,7 @@ class MovieDetails extends Component {
                 />
               </div>
               <div className="col-span-8 transform translate-y-[50px] relative font-pop">
+                <button onClick={() => this.renew()}>Click</button>
                 <h1 className="text-2xl font-semibold tracking-wider uppercase ">
                   {movie.original_title}
                 </h1>

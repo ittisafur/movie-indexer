@@ -12,9 +12,7 @@ class Index extends Component {
 
   componentDidMount() {
     axios
-      .get(
-        "https://api.themoviedb.org/3/movie/popular?api_key=ca6d58ba9bcf5c2f6cae78fa18b14045&language=en-US&page=1&include_adult=true"
-      )
+      .get("movie/popular")
       .then((res) => this.setState({ movies: res.data.results }))
       .catch((err) => console.log(err));
 
