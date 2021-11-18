@@ -1,5 +1,5 @@
 # Project is Still in development.
 
-- Search implementation
-- Responsiveness
-- Page Score
+- [x] Responsiveness
+- [ ] Page Score
+- [ ] Search implementation ( Implement debounce )
