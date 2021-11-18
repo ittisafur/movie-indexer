@@ -39,7 +39,6 @@ class Index extends Component {
   getGenres = (ids) => {
     return this.state.genres.filter((genre) => ids.includes(genre.id));
   };
-
   render() {
     const { movies } = this.state;
     return (

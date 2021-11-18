@@ -1,26 +1,29 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Casts = (props) => {
-  const { casts, movieId } = props;
+  const { casts, movieId } = props
 
   const convertToSlug = (e) => {
     return e
       .toLowerCase()
-      .replace(/ /g, "-")
-      .replace(/[^\w-]+/g, "");
-  };
+      .replace(/ /g, '-')
+      .replace(/[^\w-]+/g, '')
+  }
   return (
     <div>
       <h1 className="mt-5 text-xl font-mont uppercase font-semibold">
         Top Casts
       </h1>
-      <ul className="flex overflow-x-auto pb-3 font-pop items-center">
+      <ul className="flex-none md:flex md:overflow-x-auto pb-3 font-pop items-center">
         {casts
           .filter((c) => c.profile_path != null)
           .slice(0, 10)
           .map((res) => (
-            <li className="w-1/6 flex-none my-3 ml-3 mr-1 pb-2" key={res.id}>
+            <li
+              className="md:w-1/6 w-full flex-none my-3 ml-3 mr-1 pb-2"
+              key={res.id}
+            >
               <Link to={`/person/${res.id}/${convertToSlug(res.name)}`}>
                 <img
                   className="w-full"
@@ -37,7 +40,7 @@ const Casts = (props) => {
         </Link>
       </ul>
     </div>
-  );
-};
+  )
+}
 
-export default Casts;
+export default Casts

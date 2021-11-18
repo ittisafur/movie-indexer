@@ -1,22 +1,27 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 const TopNav = () => {
-  const [search, setSearch] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [search, setSearch] = useState([])
+  const [searchTerm, setSearchTerm] = useState('')
   useEffect(() => {
     axios
       .get(`search/movie?query=${searchTerm}`)
-      .then((res) => setSearch(res.data.results));
-  }, [searchTerm]);
+      .then((res) => setSearch(res.data.results))
+  }, [searchTerm])
   const handleSearch = (e) => {
-    if (!searchTerm) setSearch([]);
-    setSearchTerm(e.target.value);
-  };
+    if (!searchTerm) setSearch([])
+    setSearchTerm(e.target.value)
+  }
   return (
-    <div className="w-full h-12 items-center grid md:grid-cols-2 grid-cols-1 mt-2">
+    <div className="w-full h-12 items-center grid md:grid-cols-2 grid-cols-1 mt-2 mb-16 md:mb-0">
       <div>
+        <div className="md:hidden block text-center my-2">
+          <Link to="/" className="text-xl font-mono font-bold">
+            TMDb
+          </Link>
+        </div>
         <input
           className="md:px-5 md:py-1 lg:px-5 lg:py-1 px-1 py-1 font-pop text-dark-250 
           rounded-full border border-transparent focus:outline-none focus:ring-2 
@@ -51,7 +56,7 @@ const TopNav = () => {
               ))}
           </ul>
         ) : (
-          ""
+          ''
         )}
       </div>
 
@@ -66,7 +71,7 @@ const TopNav = () => {
         </ul>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default TopNav;
+export default TopNav
