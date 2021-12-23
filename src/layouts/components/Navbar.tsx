@@ -1,10 +1,10 @@
-import React from 'react'
-import { BiCameraMovie } from 'react-icons/bi'
-import { FaTv } from 'react-icons/fa'
-import { IoGameController } from 'react-icons/io5'
-import { Link } from 'react-router-dom'
+import { FunctionComponent } from "react";
+import { BiCameraMovie } from "react-icons/bi";
+import { FaTv } from "react-icons/fa";
+import { IoGameController } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar: FunctionComponent = () => {
   return (
     <nav className="nav-wrapper text-white font-mont font-semibold lg:flex flex-col w-24 hidden h-screen bg-dark-550 text-center md:flex">
       <div className="mb-5">
@@ -38,7 +38,7 @@ const Navbar = () => {
         </ul>
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

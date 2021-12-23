@@ -1,25 +1,26 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
-import { Link } from 'react-router-dom'
-import debounce from 'lodash.debounce'
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import debounce from "lodash.debounce";
 
 const TopNav = () => {
-  const [search, setSearch] = useState([])
-  const [searchTerm, setSearchTerm] = useState('')
+  const [search, setSearch] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    doSearch()
-  }, [searchTerm])
+    doSearch();
+  }, [searchTerm]);
 
   const handleSearch = (e) => {
-    if (!searchTerm) setSearch([])
-    setSearchTerm(e.target.value)
-  }
+    if (!searchTerm) setSearch([]);
+    setSearchTerm(e.target.value);
+  };
+
   const doSearch = debounce(() => {
     axios
       .get(`search/movie?query=${searchTerm}`)
-      .then((res) => setSearch(res.data.results))
-  }, 2500)
+      .then((res) => setSearch(res.data.results));
+  }, 2500);
 
   return (
     <div className="w-full h-12 items-center grid md:grid-cols-2 grid-cols-1 mt-2 mb-16 md:mb-0">
@@ -63,7 +64,7 @@ const TopNav = () => {
               ))}
           </ul>
         ) : (
-          ''
+          ""
         )}
       </div>
 
@@ -78,7 +79,7 @@ const TopNav = () => {
         </ul>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default TopNav
+export default TopNav;
