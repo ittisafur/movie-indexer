@@ -1,7 +1,12 @@
 import { Link } from "react-router-dom";
 
-const Movies = (props) => {
-  const { movie, genres } = props;
+/**
+ * Movies.
+ * @param {Object} props.movie - Movie card information.
+ * @param {Object} props.genres - Genre infomation rendering.
+ * @returns {JSX.Element}
+ */
+function Movies({ movie, genres }) {
   return (
     <div>
       <Link to={`/movies/${movie.id}`}>
@@ -25,6 +30,6 @@ const Movies = (props) => {
       </Link>
     </div>
   );
-};
+}
 
 export default Movies;

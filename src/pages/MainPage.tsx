@@ -5,7 +5,7 @@ import { VisibilityObserver } from "reactjs-visibility";
 // Components
 import Movie from "../components/Movie";
 
-function Index() {
+function MainPage() {
   const [movies, setMovies] = useState([]);
   const [genre, setGenre] = useState([]);
   const [page, setPage] = useState(1);
@@ -54,4 +54,4 @@ function Index() {
   );
 }
 
-export default Index;
+export default MainPage;

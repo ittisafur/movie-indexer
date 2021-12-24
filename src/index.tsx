@@ -4,9 +4,9 @@ import ReactDOM from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from "axios";
 
-import Index from "./pages/Index";
+import MainPage from "./pages/MainPage";
 // import TvShows from "./pages/TvShows";
-// import MovieDetails from "./pages/MovieDetails";
+import MovieDetails from "./pages/MovieDetails";
 // import CastDetails from "./pages/CastDetails";
 // import Person from "./pages/Person";
 import Default from "./layouts/Default";
@@ -24,11 +24,11 @@ ReactDOM.render(
     <BrowserRouter>
       <Default>
         <Routes>
-          <Route path="/" element={<Index />} />
-          // <Route path="/movies/:id" element={MovieDetails} />
-          // <Route path="/:id/casts" element={CastDetails} />
-          // <Route path="/tvshows" element={TvShows} />
-          // <Route path="/person/:id/:name" element={Person} />
+          <Route path="/" element={<MainPage />} />
+          <Route path="/movies/:id" element={<MovieDetails />} />
+          {/* <Route path="/:id/casts" element={CastDetails} /> */}
+          {/* <Route path="/tvshows" element={TvShows} /> */}
+          {/* <Route path="/person/:id/:name" element={Person} /> */}
         </Routes>
       </Default>
     </BrowserRouter>
