@@ -6,7 +6,7 @@ const Person = () => {
   const [person, setPerson] = useState<any>([]);
   const [related, setRelatedMovies] = useState([]);
   const [clamped, setClamped] = useState<boolean>(true);
-  const { id } = useParams();
+  const { id } = useParams<string>();
 
   const callApis = async () => {
     const { data } = await axios.get(`person/${id}`);
@@ -18,13 +18,6 @@ const Person = () => {
   useEffect(() => {
     callApis();
   }, []);
-  // axios
-  //   .get(`person/${this.props.match.params.id}`)
-  //   .then((res) => this.setState({ person: res.data }));
-
-  // axios
-  //   .get(`person/${this.props.match.params.id}/movie_credits`)
-  //   .then((res) => this.setState({ related_movies: res.data.cast }));
 
   return (
     <div>
@@ -53,10 +46,10 @@ const Person = () => {
 
           <div className='md:flex md:overflow-y-auto space-x-3'>
             {related.slice(0, 6).map((relate) => (
-              <div className='flex-none' key={relate.id}>
+              <div className='flex-none md:w-[156px] ' key={relate.id}>
                 <Link to={`/movies/${relate.id}`}>
                   <img
-                    className='md:w-[154px] w-full '
+                    className='w-full '
                     src={`https://image.tmdb.org/t/p/w154${relate.poster_path}`}
                     alt={relate.title}
                   />

@@ -45,7 +45,8 @@ function CastDetails() {
                 />
               </Link>
               <h2 className='flex items-center ml-3'>
-                <strong>{credit?.name} </strong> {credit?.character}
+                <strong>{credit?.name} </strong>
+                <span className='ml-3'> {credit?.character}</span>
               </h2>
             </div>
           </div>
