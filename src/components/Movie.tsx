@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 /**
  * Movies.
@@ -12,13 +12,14 @@ function Movies({ movie, genres }) {
       <Link to={`/movies/${movie.id}`}>
         <div key={movie.id}>
           <img
-            className="w-full"
+            className='w-full'
             src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
+            alt={movie.original_title}
           />
-          <div className="font-pop text-sm">
-            <h2 className="font-bold mt-5 mb-2">{movie.original_title}</h2>
-            <div className="flex justify-between text-dark-150 ">
-              <p className="tracking-wide w-8/12">
+          <div className='font-pop text-sm'>
+            <h2 className='font-bold mt-5 mb-2'>{movie.original_title}</h2>
+            <div className='flex justify-between text-dark-150 '>
+              <p className='tracking-wide w-8/12'>
                 {genres(movie.genre_ids).map((genre) => (
                   <span key={genre.id}>{genre.name}, </span>
                 ))}

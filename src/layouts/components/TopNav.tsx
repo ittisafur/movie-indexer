@@ -1,20 +1,11 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { Link } from "react-router-dom";
-import debounce from "lodash.debounce";
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
+import debounce from 'lodash.debounce';
 
 const TopNav = () => {
   const [search, setSearch] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
-
-  useEffect(() => {
-    doSearch();
-  }, [searchTerm]);
-
-  const handleSearch = (e) => {
-    if (!searchTerm) setSearch([]);
-    setSearchTerm(e.target.value);
-  };
+  const [searchTerm, setSearchTerm] = useState('');
 
   const doSearch = debounce(() => {
     axios
@@ -22,24 +13,34 @@ const TopNav = () => {
       .then((res) => setSearch(res.data.results));
   }, 2500);
 
+  useEffect(() => {
+    doSearch();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchTerm]);
+
+  const handleSearch = (e) => {
+    if (!searchTerm) setSearch([]);
+    setSearchTerm(e.target.value);
+  };
+
   return (
-    <div className="w-full h-12 items-center grid md:grid-cols-2 grid-cols-1 mt-2 mb-16 md:mb-0">
+    <div className='w-full h-12 items-center grid md:grid-cols-2 grid-cols-1 mt-2 mb-16 md:mb-0'>
       <div>
-        <div className="md:hidden block text-center my-2">
-          <Link to="/" className="text-xl font-mono font-bold">
+        <div className='md:hidden block text-center my-2'>
+          <Link to='/' className='text-xl font-mono font-bold'>
             TMDb
           </Link>
         </div>
         <input
-          className="md:px-5 md:py-1 lg:px-5 lg:py-1 px-1 py-1 font-pop text-dark-250 
+          className='md:px-5 md:py-1 lg:px-5 lg:py-1 px-1 py-1 font-pop text-dark-250 
           rounded-full border border-transparent focus:outline-none focus:ring-2 
-          focus:border-transparent focus:text-dark-250 w-full md:w-8/12 lg:w-8/12"
-          type="text"
-          placeholder="Search Here"
+          focus:border-transparent focus:text-dark-250 w-full md:w-8/12 lg:w-8/12'
+          type='text'
+          placeholder='Search Here'
           onKeyDown={handleSearch}
         />
         {search.length > 1 ? (
-          <ul className="z-30 absolute w-6/12 text-light-250 space-y-3 backdrop-filter backdrop-blur-md bg-opacity-50 bg-dark-550">
+          <ul className='z-30 absolute w-6/12 text-light-250 space-y-3 backdrop-filter backdrop-blur-md bg-opacity-50 bg-dark-550'>
             {search
               .filter((movie) => movie.poster_path != null)
               .slice(0, 5)
@@ -47,15 +48,16 @@ const TopNav = () => {
                 <li key={res.id}>
                   <Link
                     to={`/movies/${res.id}`}
-                    className="p-4 block flex space-x-4 items-center"
+                    className='p-4 block flex space-x-4 items-center'
                   >
                     <img
-                      className="w-14"
+                      className='w-14'
                       src={`https://image.tmdb.org/t/p/w92/${res.poster_path}`}
+                      alt={res.title}
                     />
                     <div>
                       <p>{res.title}</p>
-                      <p className="line-clamp-1 text-xs font-bold text-light-150">
+                      <p className='line-clamp-1 text-xs font-bold text-light-150'>
                         {res.overview}
                       </p>
                     </div>
@@ -64,17 +66,17 @@ const TopNav = () => {
               ))}
           </ul>
         ) : (
-          ""
+          ''
         )}
       </div>
 
-      <div className="flex md:justify-end lg:justify-end justify-center mt-2 md:mt-0 lg:mt-0">
+      <div className='flex md:justify-end lg:justify-end justify-center mt-2 md:mt-0 lg:mt-0'>
         <ul>
-          <li className="inline-block mr-3">
-            <a>IMDBPro</a>
+          <li className='inline-block mr-3'>
+            <a href='/#'>IMDBPro</a>
           </li>
-          <li className="inline-block">
-            <a>ittisafur</a>
+          <li className='inline-block'>
+            <a href='/#'>ittisafur</a>
           </li>
         </ul>
       </div>

@@ -1,25 +1,29 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-import { VisibilityObserver } from "reactjs-visibility";
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { VisibilityObserver } from 'reactjs-visibility';
 
 // Components
-import Movie from "../components/Movie";
+import Movie from '../components/Movie';
 
 function MainPage() {
   const [movies, setMovies] = useState([]);
   const [genre, setGenre] = useState([]);
   const [page, setPage] = useState(1);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     axios
-      .get("movie/popular")
+      .get('movie/popular')
       .then((res) => setMovies(res.data.results))
       .catch((err) => console.log(err));
 
-    axios.get("genre/movie/list").then((res) => setGenre(res.data.genres));
+    axios.get('genre/movie/list').then((res) => setGenre(res.data.genres));
   }, []);
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handlePaginate = (visible) => {
     if (!visible) return;
 
@@ -41,15 +45,15 @@ function MainPage() {
 
   return (
     <div>
-      <h1 className="my-5 text-2xl text-white font-mont font-semibold ">
+      <h1 className='my-5 text-2xl text-white font-mont font-semibold '>
         Popular Now
       </h1>
-      <div className="grid md:gap-3 md:grid-cols-3 lg:grid-cols-4 lg:gap-4 gap-1 grid-cols-1">
+      <div className='grid md:gap-3 md:grid-cols-3 lg:grid-cols-4 lg:gap-4 gap-1 grid-cols-1'>
         {movies.map((movie) => (
           <Movie key={movie.id} movie={movie} genres={getGenres} />
         ))}
       </div>
-      <div className="my-8 text-center"></div>
+      <div className='my-8 text-center'></div>
     </div>
   );
 }

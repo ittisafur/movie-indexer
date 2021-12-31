@@ -4,7 +4,6 @@ import axios from 'axios';
 
 function CastDetails() {
   const [credits, setCredits] = useState<any>();
-  const [loading, setLoading] = useState<boolean>();
 
   const { id } = useParams();
 
@@ -21,6 +20,7 @@ function CastDetails() {
 
   useEffect(() => {
     callCredits();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const convertToSlug = (e) => {
@@ -42,6 +42,7 @@ function CastDetails() {
                 <img
                   className='rounded'
                   src={`https://image.tmdb.org/t/p/w66_and_h66_face${credit?.profile_path}`}
+                  alt={credit?.name}
                 />
               </Link>
               <h2 className='flex items-center ml-3'>

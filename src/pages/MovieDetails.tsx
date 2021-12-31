@@ -46,6 +46,7 @@ function MovieDetails() {
 
   useEffect(() => {
     callApis();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (loading) {
@@ -63,7 +64,7 @@ function MovieDetails() {
             <div className='md:col-span-4 col-span-1'>
               <img
                 src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-                className=''
+                alt={movie.original_title}
               />
             </div>
             <div className='md:col-span-8 col-span-1 transform translate-y-[50px] relative font-pop pb-24 md:pb-0'>

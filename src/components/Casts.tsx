@@ -27,6 +27,7 @@ const Casts = (prop) => {
                 <img
                   className='w-full'
                   src={`https://image.tmdb.org/t/p/w185${res.profile_path}`}
+                  alt={res.name}
                 />
               </Link>
               <p className='pt-3 font-bold'>{res.name}</p>
