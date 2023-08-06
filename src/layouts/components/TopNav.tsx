@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import debounce from 'lodash.debounce';
+import { debounce } from 'lodash';
 
 const TopNav = () => {
   const [search, setSearch] = useState([]);
