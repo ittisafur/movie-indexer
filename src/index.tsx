@@ -15,7 +15,7 @@ import Default from './layouts/Default';
 axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
 
 axios.defaults.params = {
-  api_key: 'ca6d58ba9bcf5c2f6cae78fa18b14045',
+  api_key: 'd111ba7f8f5a3f5655fa6cc02a7579c8',
   language: 'en-US',
 };
 
